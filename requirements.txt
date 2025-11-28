@@ -1,0 +1,22 @@
+# Selene AI Assistant - Python Dependencies
+
+# Web Framework
+flask>=3.0.0
+flask-cors>=4.0.0
+
+# AI/ML
+ollama>=0.1.0
+piper-tts>=1.2.0
+
+# Image Processing
+pillow>=10.0.0
+
+# Text Processing
+g2p-en>=2.1.0
+numpy>=1.24.0
+
+# Configuration Management
+python-dotenv>=1.0.0
+
+# Optional: Enhanced Logging (for structured logs)
+# colorlog>=6.7.0
