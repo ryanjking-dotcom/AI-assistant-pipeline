@@ -15,7 +15,7 @@
 ╚════════════════════════════════════════════════════════════╝
 ```
 
-**A Fedora Linux AI Assistant with Neural TTS and Phoneme-Based Lip Sync**
+**An AI Assistant with Neural TTS and Phoneme-Based Lip Sync**
 
 </div>
 
@@ -389,7 +389,5 @@ You now have a fully-functional AI assistant running on your local machine. Chat
 ---
 
 <div align="center">
-
-**Made with ❤️ for the Fedora Linux community**
 
 </div>
