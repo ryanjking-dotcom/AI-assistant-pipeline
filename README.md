@@ -3,391 +3,589 @@
 <div align="center">
 
 ```
-╔════════════════════════════════════════════════════════════╗
-║                                                            ║
-║   ███████╗███████╗██╗     ███████╗███╗   ██╗███████╗      ║
-║   ██╔════╝██╔════╝██║     ██╔════╝████╗  ██║██╔════╝      ║
-║   ███████╗█████╗  ██║     █████╗  ██╔██╗ ██║█████╗        ║
-║   ╚════██║██╔══╝  ██║     ██╔══╝  ██║╚██╗██║██╔══╝        ║
-║   ███████║███████╗███████╗███████╗██║ ╚████║███████╗      ║
-║   ╚══════╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═══╝╚══════╝      ║
-║                                                            ║
-╚════════════════════════════════════════════════════════════╝
+╔══════════════════════════════════════════════════════════╗
+║                                                          ║
+║   ███████╗███████╗██╗     ███████╗███╗   ██╗███████╗    ║
+║   ██╔════╝██╔════╝██║     ██╔════╝████╗  ██║██╔════╝    ║
+║   ███████╗█████╗  ██║     █████╗  ██╔██╗ ██║█████╗      ║
+║   ╚════██║██╔══╝  ██║     ██╔══╝  ██║╚██╗██║██╔══╝      ║
+║   ███████║███████╗███████╗███████╗██║ ╚████║███████╗    ║
+║   ╚══════╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═══╝╚══════╝    ║
+║                                                          ║
+╚══════════════════════════════════════════════════════════╝
 ```
 
-**An AI Assistant with Neural TTS and Phoneme-Based Lip Sync**
+**An elegant AI assistant for Fedora Linux with Piper Neural TTS and Phoneme-Based Lip Sync**
+
+[Features](#-features) • [Quick Start](#-quick-start) • [Installation](#-installation) • [Usage](#-usage) • [Configuration](#%EF%B8%8F-configuration)
 
 </div>
 
+---
+
 ## 🌟 Features
 
-- 🤖 **AI-Powered Conversations** - Uses Ollama for local AI models
-- 🎙️ **Neural Text-to-Speech** - High-quality voice synthesis with Piper TTS
-- 💬 **Phoneme-Based Lip Sync** - Realistic mouth animations synchronized with speech
-- 🖼️ **Visual Character** - Animated character with dynamic expressions
-- 🌐 **Web Interface** - Clean, accessible web UI
-- 🔒 **Privacy-First** - Everything runs locally on your machine
-- ⚙️ **Easy Deployment** - Systemd service and nginx reverse proxy support
+- **🤖 Powered by Ollama** - Local AI inference using Gemma 3:4b model
+- **🎙️ Neural Text-to-Speech** - High-quality voice synthesis using Piper TTS
+- **💋 Phoneme-Based Lip Sync** - Realistic animated mouth movements synchronized to speech
+- **🎤 Voice Input** - Hands-free interaction with speech recognition (Chrome/Edge/Safari)
+- **🎨 Elegant Visual Character** - Animated character with blinking and natural expressions
+- **🔒 Privacy-Focused** - Runs entirely on your machine, no data sent to external servers
+- **⚡ One-Command Setup** - Automated installation script for quick deployment
+- **🐧 Linux-First Design** - Optimized for Fedora Linux with full systemd integration
+
+---
 
 ## 📋 Prerequisites
 
-### System Requirements
-- **OS**: Fedora, RHEL, Ubuntu, Debian, or compatible Linux distribution
-- **Python**: 3.8 or higher
-- **RAM**: 4GB minimum (8GB+ recommended for larger AI models)
-- **Disk**: 5GB free space for models and dependencies
+Before installing Selene, ensure you have:
 
-### Required Software
-- **Python 3.8+** with pip
-- **Ollama** - For running AI models locally
+### Required
+- **Linux** (Fedora, Arch, Ubuntu, Debian, or similar)
+- **Python 3.8+** (Python 3.11-3.13 recommended, avoid 3.14+)
+- **Ollama** installed and running
+- **AUR helper** (yay or paru) if on Arch-based systems - required for TTS
 
-## 🚀 Quick Start (Recommended)
+### Recommended
+- 8GB+ RAM for smooth AI model operation
+- Modern web browser (Chrome, Edge, or Safari for voice input)
 
-The easiest way to get started is using the master installer:
+---
+
+## 🚀 Quick Start
+
+The fastest way to get Selene running:
 
 ```bash
-# Clone or download the project
-cd ai-assistant-env
+# 1. Clone the repository
+git clone <repository-url>
+cd selene-assistant
 
-# Make the installer executable
-chmod +x install.sh
+# 2. Make the setup script executable
+chmod +x run.sh
 
-# Run the interactive installer
-./install.sh
+# 3. Run the one-command installer
+./run.sh
 ```
 
-The installer will guide you through:
-1. ✅ Installing all Python dependencies
-2. 🌐 Optional nginx reverse proxy setup
-3. 🔧 Optional systemd service configuration
+The script will:
+- ✅ Check Python version compatibility
+- ✅ Verify Ollama installation and download the Gemma 3:4b model
+- ✅ Set up a Python virtual environment
+- ✅ Install all dependencies (including TTS)
+- ✅ Download the Piper TTS voice model
+- ✅ Create necessary directories
+- ✅ Start the web server
 
-That's it! The installer handles everything automatically.
+**Access Selene at:** `http://localhost:5000`
 
-## 🛠️ Manual Installation
+---
 
-If you prefer more control, follow these steps:
+## 📦 Installation
 
-### Step 1: Install Ollama
+### Option 1: Virtual Environment (Recommended)
+
+```bash
+./run.sh --venv
+```
+
+This creates an isolated Python environment for Selene.
+
+### Option 2: System-Wide Installation
+
+```bash
+./run.sh --system
+```
+
+Requires sudo privileges. Installs packages system-wide.
+
+### Option 3: User Installation
+
+```bash
+./run.sh --user
+```
+
+Installs packages in your user directory without sudo.
+
+### Advanced Installation Options
+
+#### With Nginx Reverse Proxy
+```bash
+./run.sh --with-nginx --domain selene.local
+```
+
+#### As a Systemd Service
+```bash
+./run.sh --with-service
+```
+
+#### Skip Setup (if already installed)
+```bash
+./run.sh --skip-setup
+```
+
+---
+
+## 🔧 Manual Installation
+
+If you prefer manual installation:
+
+### Understanding Virtual Environments
+
+A virtual environment keeps Selene's Python packages isolated from your system Python. This prevents conflicts and makes it easy to manage dependencies.
+
+**Creating a virtual environment:**
+```bash
+python3 -m venv venv
+```
+
+**Activating the virtual environment:**
+
+The activation command depends on your shell:
+
+| Shell | Command |
+|-------|---------|
+| bash/zsh | `source venv/bin/activate` |
+| fish | `source venv/bin/activate.fish` |
+| csh/tcsh | `source venv/bin/activate.csh` |
+| PowerShell (Windows) | `venv\Scripts\Activate.ps1` |
+
+**You'll know it's activated** when you see `(venv)` at the start of your prompt:
+```bash
+(venv) user@hostname:~/selene-assistant$
+```
+
+**Deactivating:**
+```bash
+deactivate
+```
+
+**Important:** Always activate the virtual environment before running Selene or installing packages!
+
+---
+
+### 1. Install Ollama
 
 ```bash
 # Install Ollama
 curl -fsSL https://ollama.ai/install.sh | sh
 
-# Start Ollama
+# Start Ollama service
 ollama serve
 
-# Pull an AI model (in a new terminal)
+# Download the Gemma 3:4b model
 ollama pull gemma3:4b
 ```
 
-### Step 2: Install Selene
+### 2. Install Python Dependencies
 
-Choose your preferred installation method:
-
-#### Option A: Virtual Environment (Recommended for Development)
+#### For Arch-based systems:
 ```bash
-./setup.sh
+# Install AUR helper if not already installed
+sudo pacman -S yay
+
+# Install onnxruntime from AUR (required for TTS)
+yay -S python-onnxruntime-cpu
+
+# Create virtual environment
+python3 -m venv venv
+
+# Activate virtual environment
+# For bash/zsh:
+source venv/bin/activate
+# For fish shell:
+source venv/bin/activate.fish
+# For csh/tcsh:
+source venv/bin/activate.csh
+
+# Install Python packages
+pip install -r requirements.txt
 ```
 
-#### Option B: System-Wide Installation
+#### For Fedora:
 ```bash
-./setup.sh --system
+# Install venv module if not already installed
+sudo dnf install python3-virtualenv
+
+# Create virtual environment
+python3 -m venv venv
+
+# Activate virtual environment
+# For bash/zsh:
+source venv/bin/activate
+# For fish shell:
+source venv/bin/activate.fish
+# For csh/tcsh:
+source venv/bin/activate.csh
+
+# Install Python packages
+pip install -r requirements.txt
 ```
 
-#### Option C: User-Only Installation
+#### For Ubuntu/Debian:
 ```bash
-./setup.sh --user
+# Install venv module if not already installed
+sudo apt install python3-venv
+
+# Create virtual environment
+python3 -m venv venv
+
+# Activate virtual environment
+# For bash/zsh:
+source venv/bin/activate
+# For fish shell:
+source venv/bin/activate.fish
+# For csh/tcsh:
+source venv/bin/activate.csh
+
+# Install Python packages
+pip install -r requirements.txt
 ```
 
-The setup script will:
-- Install all Python dependencies
-- Download the Piper TTS voice model (~100MB)
-- Create necessary directories
-- Generate a `.env` configuration file
-
-### Step 3: Add Character Images
-
-Place your character images in the `images/` directory:
-
-**Required images:**
-- `character_open.png` - Eyes open
-- `character_half.png` - Eyes half-closed
-- `character_closed.png` - Eyes closed
-- `mouth_closed_neutral.png`
-- `mouth_closed_smile.png`
-- `mouth_small_open.png`
-- `mouth_round_o.png`
-- `mouth_round_o2.png`
-- `mouth_small_oval.png`
-- `mouth_wide_open.png`
-- `mouth_wide_smile.png`
-- `mouth_very_wide.png`
-
-### Step 4: Start Selene
+### 3. Download Piper TTS Voice Model
 
 ```bash
+mkdir -p piper_models
+cd piper_models
+
+# Download Jenny Dioco (British English) voice
+wget https://github.com/rhasspy/piper/releases/download/v1.2.0/en_GB-jenny_dioco-medium.onnx
+wget https://github.com/rhasspy/piper/releases/download/v1.2.0/en_GB-jenny_dioco-medium.onnx.json
+
+cd ..
+```
+
+### 4. Create Configuration File
+
+```bash
+cp .env.example .env
+# Edit .env to customize settings
+```
+
+### 5. Run Selene
+
+```bash
+# Make sure virtual environment is activated first!
+# For bash/zsh:
+source venv/bin/activate
+# For fish shell:
+source venv/bin/activate.fish
+# For csh/tcsh:
+source venv/bin/activate.csh
+
+# Then run Selene
+python assistant.py
+```
+
+---
+
+## 💬 Usage
+
+### Starting Selene
+
+```bash
+# Simple start (uses virtual environment if available)
 ./run.sh
+
+# Or manually with virtual environment
+# For bash/zsh:
+source venv/bin/activate
+# For fish shell:
+source venv/bin/activate.fish
+# For csh/tcsh:
+source venv/bin/activate.csh
+
+# Then start
+python assistant.py
 ```
 
-Access Selene at: **http://localhost:5000**
+### Using the Web Interface
 
-## 🌐 Setting Up Nginx (Optional)
+1. Open your browser to `http://localhost:5000`
+2. **Enable audio** when prompted (required for TTS)
+3. Type a message or click **"Voice Input"** for hands-free interaction
+4. Watch Selene respond with animated expressions and voice
 
-For a cleaner URL without port numbers:
+### Voice Input
 
-```bash
-sudo ./setup_nginx.sh
+- Click **"Voice Input"** button
+- Speak naturally
+- Recording automatically stops after 3.5 seconds of silence
+- Click **"Stop"** to manually end recording
+
+### Example Interactions
+
+```
+You: "Hello Selene, how are you today?"
+Selene: "Hello! I'm doing wonderfully, thank you for asking..."
+
+You: "What's your favorite thing about Fedora Linux?"
+Selene: "I appreciate Fedora's commitment to pushing forward..."
+
+You: "Can you tell me about your birthday?"
+Selene: "I was born on October 15, 2025. That makes me..."
 ```
 
-This allows you to access Selene at: **http://selene.local**
-
-### Network Access
-
-To access Selene from other devices on your network:
-
-1. Find your server's IP address:
-   ```bash
-   ip addr show | grep inet
-   ```
-
-2. On other devices, add to `/etc/hosts`:
-   ```
-   192.168.1.100    selene.local
-   ```
-
-## 🔧 Running as a System Service
-
-To run Selene automatically on boot:
-
-```bash
-# Create the systemd service
-sudo ./create_service.sh
-
-# Enable and start
-sudo systemctl enable selene
-sudo systemctl start selene
-
-# Check status
-sudo systemctl status selene
-```
-
-### Service Management
-
-Use the convenient control script:
-
-```bash
-# Start the service
-./selene-control.sh start
-
-# Stop the service
-./selene-control.sh stop
-
-# Restart the service
-./selene-control.sh restart
-
-# Check status
-./selene-control.sh status
-
-# View live logs
-./selene-control.sh logs
-
-# Enable auto-start on boot
-./selene-control.sh enable
-```
+---
 
 ## ⚙️ Configuration
 
-Edit the `.env` file to customize Selene:
+### Configuration File (.env)
 
-```env
+All settings are in `.env`:
+
+```bash
 # Server Configuration
 FLASK_HOST=0.0.0.0
 FLASK_PORT=5000
+FLASK_DEBUG=false
 
-# AI Model (change to any Ollama model)
+# Ollama Configuration
 OLLAMA_MODEL=gemma3:4b
 OLLAMA_BASE_URL=http://localhost:11434
 
-# Assistant Identity
+# Assistant Configuration
 ASSISTANT_NAME=Selene
 ASSISTANT_BIRTHDAY=2025-10-15
 
-# Voice Model
+# Piper TTS Configuration
 PIPER_MODEL_NAME=en_GB-jenny_dioco-medium
-
-# Features
-ENABLE_TTS=true
-ENABLE_VOICE_RECOGNITION=true
-ENABLE_LIP_SYNC=true
+PIPER_MODELS_DIR=piper_models
 
 # Performance
 MAX_CONVERSATION_HISTORY=10
+TTS_CACHE_SIZE=100
 ```
 
-After changing the configuration, restart Selene:
+### Changing the AI Model
+
+Edit `.env` and change `OLLAMA_MODEL`:
+
 ```bash
-./selene-control.sh restart
+OLLAMA_MODEL=llama3.2  # or any Ollama model
 ```
 
-## 🔍 Troubleshooting
+Then download the model:
 
-### Selene Won't Start
-
-Run the diagnostic tool:
 ```bash
-./diagnose.sh
+ollama pull llama3.2
 ```
 
-This checks:
-- Is Selene running?
-- Is nginx configured correctly?
-- Is Ollama running?
-- Are ports available?
-- Recent error logs
+### Changing the Voice
 
-### Common Issues
+Download a different Piper voice from the [Piper releases page](https://github.com/rhasspy/piper/releases/tag/v1.2.0) and update `.env`:
 
-**"Ollama connection failed"**
 ```bash
-# Start Ollama
+PIPER_MODEL_NAME=en_US-lessac-medium  # American English
+```
+
+---
+
+## 🐛 Troubleshooting
+
+### Python 3.14+ Issues
+
+**Problem:** TTS installation fails on Python 3.14+
+
+**Solution:** Use Python 3.11-3.13:
+
+```bash
+# For Arch-based systems
+sudo pacman -S python312
+python3.12 -m venv venv
+source venv/bin/activate
+./run.sh --skip-setup
+```
+
+### Ollama Connection Error
+
+**Problem:** "Ollama doesn't appear to be running"
+
+**Solution:**
+
+```bash
+# Start Ollama service
 ollama serve
+
+# Or enable as systemd service
+sudo systemctl enable --now ollama
 ```
 
-**"Model not found"**
+### Voice Input Not Working
+
+**Problem:** "Speech recognition is not supported"
+
+**Solution:** Use Chrome, Edge, or Safari - Firefox doesn't support Web Speech API
+
+### TTS Installation Failed
+
+**Problem:** "CRITICAL ERROR: TTS Installation Failed"
+
+**Solution for Arch users:**
+
 ```bash
-# Pull the model
-ollama pull gemma3:4b
+# Install AUR helper first
+sudo pacman -S yay
+
+# Then re-run
+./run.sh
 ```
 
-**"Port 5000 already in use"**
-```bash
-# Find what's using the port
-sudo lsof -i :5000
+### Port Already in Use
 
-# Or change the port in .env
+**Problem:** Port 5000 is already taken
+
+**Solution:** Change the port in `.env`:
+
+```bash
 FLASK_PORT=5001
 ```
 
-**"Piper TTS not available"**
-```bash
-# Reinstall dependencies
-./setup.sh --system
-```
-
-### View Logs
-
-```bash
-# Application logs
-tail -f logs/selene.log
-
-# Service logs (if using systemd)
-sudo journalctl -u selene -f
-
-# Nginx logs (if using nginx)
-sudo tail -f /var/log/nginx/selene_error.log
-```
+---
 
 ## 📁 Project Structure
 
 ```
-ai-assistant-env/
-├── assistant.py              # Main application
-├── .env                      # Configuration file
-├── requirements.txt          # Python dependencies
-│
-├── modules/                  # Python modules
-│   ├── utils.py             # Configuration & utilities
-│   ├── phonemes.py          # Phoneme processing
-│   ├── tts.py               # Text-to-speech
-│   └── api.py               # Flask routes
-│
-├── images/                   # Character images
-├── piper_models/            # TTS voice models
-├── logs/                    # Application logs
-├── temp/                    # Temporary files
-│
-├── install.sh               # Master installer
-├── setup.sh                 # Dependency installer
-├── run.sh                   # Start script
-├── create_service.sh        # Service creator
-├── setup_nginx.sh           # Nginx configurator
-├── selene-control.sh        # Service controller
-└── diagnose.sh              # Diagnostic tool
+selene-assistant/
+├── run.sh                 # One-command setup script
+├── assistant.py           # Main entry point
+├── requirements.txt       # Python dependencies
+├── .env                   # Configuration file
+├── modules/
+│   ├── __init__.py       # Module initialization
+│   ├── api.py            # Flask routes and web interface
+│   ├── tts.py            # Piper TTS integration
+│   ├── phonemes.py       # Phoneme-based lip sync
+│   └── utils.py          # Configuration and utilities
+├── piper_models/         # TTS voice models
+├── images/               # Character images
+├── temp/                 # Temporary files
+└── logs/                 # Application logs
 ```
 
-## 🎯 Usage Tips
+---
 
-### Changing AI Models
+## 🎨 Character Images
 
-Selene works with any Ollama model:
+Selene's visual appearance consists of layered images:
+
+### Eye States
+- `character_open.png` - Normal open eyes
+- `character_half.png` - Half-closed eyes
+- `character_closed.png` - Closed eyes (blinking)
+
+### Mouth States
+- `mouth_closed_neutral.png` - Resting position
+- `mouth_small_open.png` - Small opening
+- `mouth_wide_open.png` - Wide opening
+- `mouth_round_o.png` - O shape
+- And more...
+
+Place custom images in the `images/` directory to customize her appearance.
+
+---
+
+## 🔒 Security & Privacy
+
+- **100% Local** - All processing happens on your machine
+- **No External APIs** - No data sent to third parties
+- **Open Source** - Fully auditable code
+- **Creator Privacy** - Selene never discloses creator information
+
+---
+
+## 🛠️ Development
+
+### Running in Debug Mode
 
 ```bash
-# List available models
-ollama list
+# Edit .env
+FLASK_DEBUG=true
 
-# Pull a new model
-ollama pull llama2
-
-# Update .env
-OLLAMA_MODEL=llama2
-
-# Restart Selene
-./selene-control.sh restart
+# Run
+python assistant.py
 ```
 
-### Performance Tuning
+### Viewing Logs
 
-For better performance on lower-end hardware:
+```bash
+# Real-time logs
+tail -f logs/selene.log
 
-1. Use smaller models: `gemma3:4b` or `qwen2.5:3b`
-2. Reduce conversation history in `.env`:
-   ```env
-   MAX_CONVERSATION_HISTORY=5
-   ```
-3. Lower TTS cache size:
-   ```env
-   TTS_CACHE_SIZE=50
-   ```
+# If running as service
+sudo journalctl -u selene -f
+```
 
-## 🔐 Security Notes
+### Stopping the Service
 
-- Selene binds to `0.0.0.0` by default (accessible from network)
-- To restrict to localhost only, edit `.env`:
-  ```env
-  FLASK_HOST=127.0.0.1
-  ```
-- Consider using a firewall to control access
-- For production use, add HTTPS with Let's Encrypt
+```bash
+# If running directly
+Ctrl+C
+
+# If running as service
+sudo systemctl stop selene
+```
+
+---
+
+## 📝 System Requirements
+
+### Minimum
+- 4GB RAM
+- 2 CPU cores
+- 5GB disk space (models + dependencies)
+- Linux kernel 4.4+
+
+### Recommended
+- 8GB+ RAM
+- 4+ CPU cores
+- 10GB disk space
+- Modern GPU (optional, for faster inference)
+
+---
 
 ## 🤝 Contributing
 
 Contributions are welcome! Areas for improvement:
 
 - Additional voice models
-- More character expressions
-- Voice input support
-- Multi-language support
-- Custom personality templates
+- More character animations
+- Enhanced lip sync accuracy
+- Performance optimizations
+- Documentation improvements
 
-## 📝 License
+---
 
-This project is provided as-is for personal and educational use.
+## 📄 License
 
-## 🆘 Getting Help
+This project is open source. See the LICENSE file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- **Piper TTS** - High-quality neural text-to-speech
+- **Ollama** - Local LLM inference
+- **g2p-en** - Grapheme-to-phoneme conversion
+- **Fedora Project** - Inspiration and community
+
+---
+
+## 📞 Support
 
 If you encounter issues:
 
-1. Run `./diagnose.sh` for automatic troubleshooting
-2. Check logs in `logs/selene.log`
-3. Verify Ollama is running: `ollama list`
-4. Ensure all dependencies are installed: `python3 -c "import flask, ollama, piper"`
-
-## 🎉 Enjoy!
-
-You now have a fully-functional AI assistant running on your local machine. Chat with Selene and enjoy your privacy-respecting AI companion!
+1. Check the [Troubleshooting](#-troubleshooting) section
+2. View logs: `tail -f logs/selene.log`
+3. Ensure all dependencies are installed
+4. Try the automated setup: `./run.sh`
 
 ---
 
 <div align="center">
+
+**Made with 💙 for the Fedora Linux community**
+
+*Bringing clarity and elegance to AI assistance*
 
 </div>
