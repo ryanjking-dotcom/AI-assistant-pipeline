@@ -10,7 +10,7 @@
 
 ---
 
-## 🌟 Features
+## Features
 
 - Powered by Ollama - Local AI inference using Gemma 3:4b model
 - Text-to-Speech - High-quality voice synthesis using Piper TTS
@@ -22,7 +22,7 @@
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before installing Selene, ensure you have:
 
@@ -66,7 +66,7 @@ The script will:
 
 ---
 
-## 📦 Installation
+## Installation
 
 ### Option 1: Virtual Environment (Recommended)
 
