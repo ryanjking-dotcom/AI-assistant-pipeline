@@ -4,8 +4,6 @@
 
 **An elegant AI assistant for Fedora Linux with Piper Neural TTS and Phoneme-Based Lip Sync**
 
-[Features](#-features) • [Quick Start](#-quick-start) • [Installation](#-installation) • [Usage](#-usage) • [Configuration](#%EF%B8%8F-configuration)
-
 </div>
 
 ---
