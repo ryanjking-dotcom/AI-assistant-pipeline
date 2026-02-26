@@ -2,19 +2,6 @@
 
 <div align="center">
 
-```
-╔══════════════════════════════════════════════════════════╗
-║                                                          ║
-║   ███████╗███████╗██╗     ███████╗███╗   ██╗███████╗    ║
-║   ██╔════╝██╔════╝██║     ██╔════╝████╗  ██║██╔════╝    ║
-║   ███████╗█████╗  ██║     █████╗  ██╔██╗ ██║█████╗      ║
-║   ╚════██║██╔══╝  ██║     ██╔══╝  ██║╚██╗██║██╔══╝      ║
-║   ███████║███████╗███████╗███████╗██║ ╚████║███████╗    ║
-║   ╚══════╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═══╝╚══════╝    ║
-║                                                          ║
-╚══════════════════════════════════════════════════════════╝
-```
-
 **An elegant AI assistant for Fedora Linux with Piper Neural TTS and Phoneme-Based Lip Sync**
 
 [Features](#-features) • [Quick Start](#-quick-start) • [Installation](#-installation) • [Usage](#-usage) • [Configuration](#%EF%B8%8F-configuration)
@@ -25,14 +12,13 @@
 
 ## 🌟 Features
 
-- **🤖 Powered by Ollama** - Local AI inference using Gemma 3:4b model
-- **🎙️ Neural Text-to-Speech** - High-quality voice synthesis using Piper TTS
-- **💋 Phoneme-Based Lip Sync** - Realistic animated mouth movements synchronized to speech
-- **🎤 Voice Input** - Hands-free interaction with speech recognition (Chrome/Edge/Safari)
-- **🎨 Elegant Visual Character** - Animated character with blinking and natural expressions
-- **🔒 Privacy-Focused** - Runs entirely on your machine, no data sent to external servers
-- **⚡ One-Command Setup** - Automated installation script for quick deployment
-- **🐧 Linux-First Design** - Optimized for Fedora Linux with full systemd integration
+- Powered by Ollama - Local AI inference using Gemma 3:4b model
+- Text-to-Speech - High-quality voice synthesis using Piper TTS
+- Phoneme-Based Lip Sync - Realistic animated mouth movements synchronized to speech
+- Voice Input - Hands-free interaction with speech recognition (Chrome/Edge/Safari)
+- Visual Portrait - Animated character with blinking and natural expressions (Requires image)
+- One-Command Setup - Automated installation script for quick deployment
+- Linux-First Design - Optimized for Fedora Linux with full systemd integration
 
 ---
 
@@ -44,7 +30,6 @@ Before installing Selene, ensure you have:
 - **Linux** (Fedora, Arch, Ubuntu, Debian, or similar)
 - **Python 3.8+** (Python 3.11-3.13 recommended, avoid 3.14+)
 - **Ollama** installed and running
-- **AUR helper** (yay or paru) if on Arch-based systems - required for TTS
 
 ### Recommended
 - 8GB+ RAM for smooth AI model operation
@@ -52,7 +37,7 @@ Before installing Selene, ensure you have:
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 The fastest way to get Selene running:
 
@@ -69,13 +54,13 @@ chmod +x run.sh
 ```
 
 The script will:
-- ✅ Check Python version compatibility
-- ✅ Verify Ollama installation and download the Gemma 3:4b model
-- ✅ Set up a Python virtual environment
-- ✅ Install all dependencies (including TTS)
-- ✅ Download the Piper TTS voice model
-- ✅ Create necessary directories
-- ✅ Start the web server
+- Check Python version compatibility
+- Verify Ollama installation and download the Gemma 3:4b model
+- Set up a Python virtual environment
+- Install all dependencies (including TTS)
+- Download the Piper TTS voice model
+- Create necessary directories
+- Start the web server
 
 **Access Selene at:** `http://localhost:5000`
 
@@ -279,7 +264,7 @@ python assistant.py
 
 ---
 
-## 💬 Usage
+## Usage
 
 ### Starting Selene
 
@@ -328,7 +313,7 @@ Selene: "I was born on October 15, 2025. That makes me..."
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 ### Configuration File (.env)
 
@@ -381,7 +366,7 @@ PIPER_MODEL_NAME=en_US-lessac-medium  # American English
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Python 3.14+ Issues
 
@@ -443,7 +428,7 @@ FLASK_PORT=5001
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 selene-assistant/
@@ -465,7 +450,7 @@ selene-assistant/
 
 ---
 
-## 🎨 Character Images
+## Character Images
 
 Selene's visual appearance consists of layered images:
 
@@ -485,7 +470,7 @@ Place custom images in the `images/` directory to customize her appearance.
 
 ---
 
-## 🔒 Security & Privacy
+## Security & Privacy
 
 - **100% Local** - All processing happens on your machine
 - **No External APIs** - No data sent to third parties
@@ -494,7 +479,7 @@ Place custom images in the `images/` directory to customize her appearance.
 
 ---
 
-## 🛠️ Development
+## Development
 
 ### Running in Debug Mode
 
@@ -528,7 +513,7 @@ sudo systemctl stop selene
 
 ---
 
-## 📝 System Requirements
+## System Requirements
 
 ### Minimum
 - 4GB RAM
@@ -544,7 +529,7 @@ sudo systemctl stop selene
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Areas for improvement:
 
@@ -556,13 +541,13 @@ Contributions are welcome! Areas for improvement:
 
 ---
 
-## 📄 License
+## License
 
 This project is open source. See the LICENSE file for details.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Piper TTS** - High-quality neural text-to-speech
 - **Ollama** - Local LLM inference
@@ -571,7 +556,7 @@ This project is open source. See the LICENSE file for details.
 
 ---
 
-## 📞 Support
+## Support
 
 If you encounter issues:
 
@@ -583,8 +568,6 @@ If you encounter issues:
 ---
 
 <div align="center">
-
-**Made with 💙 for the Fedora Linux community**
 
 *Bringing clarity and elegance to AI assistance*
 
