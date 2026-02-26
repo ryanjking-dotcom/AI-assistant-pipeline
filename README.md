@@ -109,7 +109,7 @@ Installs packages in your user directory without sudo.
 
 ---
 
-## 🔧 Manual Installation
+## Manual Installation
 
 If you prefer manual installation:
 
